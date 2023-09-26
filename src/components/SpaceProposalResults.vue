@@ -57,6 +57,10 @@ const isPendingScore = computed(
         v-if="proposal.privacy === 'shutter'"
         class="pt-2"
       />
+      <div v-if="proposal.privacy === ''">
+        <br />
+        Powered by OShhhnap!
+      </div>
     </template>
   </BaseBlock>
 </template>

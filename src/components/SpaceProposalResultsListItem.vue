@@ -76,9 +76,7 @@ const isVisible = computed(() => {
       </div>
       <div class="flex justify-end">
         <i-ho-lock-closed
-          v-if="
-            proposal.privacy === 'shutter' && proposal.scores_state !== 'final'
-          "
+          v-if="proposal.scores_state !== 'final'"
           v-tippy="{ content: $t('privacy.shutter.tooltip') }"
           class="mx-auto cursor-help"
         />
@@ -102,7 +100,11 @@ const isVisible = computed(() => {
     </div>
 
     <SpaceProposalResultsProgressBar
-      :value="results.scoresByStrategy[choice.i]"
+      :value="
+        proposal.scores_state !== 'final'
+          ? 0
+          : results.scoresByStrategy[choice.i]
+      "
       :max="
         proposal.type === 'basic' && hideAbstain
           ? results.scores[0] + results.scores[1]
