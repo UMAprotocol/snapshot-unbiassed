@@ -110,7 +110,10 @@ watch(web3Account, loadUserVote, { immediate: true });
       :vote="vote"
       :profiles="profiles"
       :space="space"
-      :proposal="proposal"
+      :proposal="{
+        ...proposal,
+        privacy: 'shutter'
+      }"
       :class="{ '!border-0': i === 0 }"
       :data-testid="`proposal-votes-list-item-${i}`"
     />
@@ -126,7 +129,10 @@ watch(web3Account, loadUserVote, { immediate: true });
     <teleport to="#modal">
       <SpaceProposalVotesModal
         :space="space"
-        :proposal="proposal"
+        :proposal="{
+          ...proposal,
+          privacy: 'shutter'
+        }"
         :open="modalVotesmOpen"
         @close="modalVotesmOpen = false"
       />
