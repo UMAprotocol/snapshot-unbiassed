@@ -193,10 +193,13 @@ const executeProposalUma = async () => {
 
   try {
     clearBatchError();
+    await loadVotes({});
+    const voteResolution = formatVotesResolutions(votes.value);
     const executingProposal = plugin.executeProposalUma(
       getInstance().web3,
       props.umaAddress,
-      getTransactionsUma()
+      getTransactionsUma(),
+      voteResolution
     );
     const step = await executingProposal.next();
     if (step.value)
@@ -258,7 +261,7 @@ function wasProposalFinalized(proposal: Proposal) {
 
 const questionState = computed<QuestionState>(() => {
   if (!web3.value.account) return 'no-wallet-connection';
-
+  
   if (loading.value) return 'loading';
 
   if (!questionDetails.value) return 'error';
@@ -334,7 +337,7 @@ onMounted(async () => {
     <div v-if="connectedToRightChain || usingMetaMask">
       <div
         v-if="questionState === 'waiting-for-vote-confirmation'"
-        class="my-4 inline-block"
+        class="mt-4 inline-block"
       >
         <BaseContainer class="flex items-center">
           <BaseButton @click="showProposeModal" class="mr-2">
@@ -492,7 +495,7 @@ onMounted(async () => {
       </div>
 
       <div
-        v-if="questionState === 'proposal-approved'"
+        v-if="questionState === 'waiting-for-vote-confirmation'"
         class="my-4 inline-block"
       >
         <BaseContainer class="flex items-center">

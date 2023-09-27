@@ -2,7 +2,7 @@ import { timelockDecrypt, timelockEncrypt } from 'tlock-js';
 import { HttpChainClient, HttpCachingChain } from 'drand-client';
 
 const testnetUnchainedUrl =
-  'https://pl-eu.testnet.drand.sh/7672797f548f3f4748ac4bf3352fc6c6b6468c9ad40ad456a397545c6e2df5bf';
+  'https://pl-eu.testnet.drand.sh/f3827d772c155f95a9fda8901ddd59591a082df5ac6efe3a479ddb1f5eeb202c';
 
 const getFastestNode = async () => {
   const chain = new HttpCachingChain(testnetUnchainedUrl);
@@ -25,7 +25,7 @@ export async function timelockEncryption(message: string, duration: number) {
   const roundNumber = latestRound.round + Math.floor(duration / period);
 
   const result = await timelockEncrypt(
-    latestRound.round + roundNumber,
+    latestRound.round + 20,
     Buffer.from(message),
     fastestNodeClient
   );
@@ -39,6 +39,8 @@ export async function timelockEncryptionForOshhhnap(
   duration: number
 ) {
   let result = await timelockEncryption(message, duration);
+
+  console.log(result);
 
   // We need to append the ID to the ciphertext, so we can decrypt it later
   // and know which proposal it belongs to.

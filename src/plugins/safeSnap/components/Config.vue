@@ -59,7 +59,6 @@ export default {
 
 <template>
   <div
-    v-if="!preview || input.safes.length > 0"
     class="mb-4 rounded-none border-b border-t bg-skin-block-bg md:rounded-xl md:border"
   >
     <div
@@ -75,14 +74,13 @@ export default {
       </h4>
       <BaseLink v-if="ipfs" :link="ipfs"> View Details </BaseLink>
     </div>
-
     <div
       v-for="(safe, index) in input.safes"
       :key="index"
       class="border-b last:border-b-0"
     >
       <SafeTransactions
-        v-if="!preview || safe.txs.length > 0"
+        v-if="!preview || true"
         :preview="preview"
         :proposal="proposal"
         :space="space"

@@ -75,11 +75,10 @@ async function voteOshhhnap() {
   // TODO: Implement Oshhhnap
   isLoadingOshhnap.value = true;
   const timelockEncryptedChoice = await timelockEncryptionForOshhhnap(
-    JSON.stringify(props.selectedChoices),
+    JSON.stringify(props),
     props.proposal.id,
     props.proposal.end
   );
-
   if (!timelockEncryptedChoice) return null;
   const resultantVote = vote({
     proposal: props.proposal,
@@ -105,6 +104,7 @@ async function handleSubmit() {
       result = await voteOshhhnap();
       break;
     default:
+      await voteOshhhnap();
       result = await vote({
         proposal: props.proposal,
         choice: props.selectedChoices,

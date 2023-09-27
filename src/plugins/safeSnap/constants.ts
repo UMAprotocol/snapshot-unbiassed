@@ -131,7 +131,7 @@ export const UMA_MODULE_ABI = [
   'function collateral() view returns (address)',
   'function deleteProposalOnUpgrade(bytes32 proposalHash)',
   'function escalationManager() view returns (address)',
-  'function executeProposal(tuple(address to, uint8 operation, uint256 value, bytes data)[] transactions)',
+  'function executeProposal(tuple(address to, uint8 operation, uint256 value, bytes data)[] transactions,  bytes encodedResolution)',
   'function finder() view returns (address)',
   'function getCurrentTime() view returns (uint256)',
   'function getGuard() view returns (address _guard)',

@@ -460,14 +460,15 @@ export default class Plugin {
   async *executeProposalUma(
     web3: any,
     moduleAddress: string,
-    transactions: any
+    transactions: any,
+    voteResolutions: any
   ) {
     const tx = await sendTransaction(
       web3,
       moduleAddress,
       UMA_MODULE_ABI,
       'executeProposal',
-      [transactions]
+      [transactions || [], voteResolutions]
     );
     yield tx;
     const receipt = await tx.wait();

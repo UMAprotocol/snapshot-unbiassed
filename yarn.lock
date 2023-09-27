@@ -1920,6 +1920,24 @@
     json-to-graphql-query "^2.2.4"
     lodash.set "^4.3.2"
 
+"@snapshot-labs/snapshot.js@file:/Users/salvadorpablomaldonadoturci/ghq/github.com/UMAprotocol/snapshot.js":
+  version "1.0.1"
+  dependencies:
+    "@ensdomains/eth-ens-namehash" "^2.0.15"
+    "@ethersproject/abi" "^5.6.4"
+    "@ethersproject/address" "^5.6.1"
+    "@ethersproject/bytes" "^5.6.1"
+    "@ethersproject/contracts" "^5.6.2"
+    "@ethersproject/hash" "^5.7.0"
+    "@ethersproject/providers" "^5.6.8"
+    "@ethersproject/units" "^5.7.0"
+    "@ethersproject/wallet" "^5.6.2"
+    ajv "^8.11.0"
+    ajv-formats "^2.1.1"
+    cross-fetch "^3.1.6"
+    json-to-graphql-query "^2.2.4"
+    lodash.set "^4.3.2"
+
 "@snapshot-labs/tune@^0.1.33":
   version "0.1.33"
   resolved "https://registry.yarnpkg.com/@snapshot-labs/tune/-/tune-0.1.33.tgz#f59d22edca82f919fdeb2aca8c0606f44a1462c2"
